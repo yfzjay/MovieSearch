@@ -30,12 +30,13 @@ redis_cli.set("douban_count",response1['hits']['total']['value'])
 
 class TopView(View):
     def get(self,request):
-        topn_search = redis_cli.zrevrangebyscore("search_keywords_set", "+inf", "-inf", start=0, num=5)
+        top_num = request.GET.get('q', '')  # 获取url中参数s的值
+        topn_search = redis_cli.zrevrangebyscore("search_keywords_set", "+inf", "-inf", start=0, num=top_num)
         return HttpResponse(json.dumps(topn_search), content_type="application/json")
 
 class SuggestView(View):
     def get(self,request):
-        key_words = request.GET.get('s', '')  # 获取url中参数s的值
+        key_words = request.GET.get('q', '')  # 获取url中参数s的值
         print(key_words)
         re_datas = []
         response = client.search(
