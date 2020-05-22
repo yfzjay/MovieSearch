@@ -31,7 +31,6 @@ redis_cli.set("douban_count",response1['hits']['total']['value'])
 class TopView(View):
     def get(self,request):
         topn_search = redis_cli.zrevrangebyscore("search_keywords_set", "+inf", "-inf", start=0, num=5)
-        topn_search = [item.decode('utf8') for item in topn_search]
         return HttpResponse(json.dumps(topn_search), content_type="application/json")
 
 class SuggestView(View):
