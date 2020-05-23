@@ -30,7 +30,7 @@ redis_cli.set("douban_count",response1['hits']['total']['value'])
 
 class TopView(View):
     def get(self,request):
-        top_num = request.GET.get('q', '')  # 获取url中参数s的值
+        top_num = int(request.GET.get('q', '5'))  # 获取url中参数s的值
         topn_search = redis_cli.zrevrangebyscore("search_keywords_set", "+inf", "-inf", start=0, num=top_num)
         re_datas=[]
         for topn in topn_search:
