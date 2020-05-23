@@ -32,7 +32,13 @@ class TopView(View):
     def get(self,request):
         top_num = request.GET.get('q', '')  # 获取url中参数s的值
         topn_search = redis_cli.zrevrangebyscore("search_keywords_set", "+inf", "-inf", start=0, num=top_num)
-        return HttpResponse(json.dumps(topn_search), content_type="application/json")
+        re_datas=[]
+        for topn in topn_search:
+            data={}
+            data["name"]=topn
+            data["value"]=redis_cli.zscore("search_keywords_set",topn)
+            re_datas.append(data)
+        return HttpResponse(json.dumps(re_datas), content_type="application/json")
 
 class SuggestView(View):
     def get(self,request):
