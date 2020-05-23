@@ -1,8 +1,6 @@
 from django.shortcuts import render
 import json
-from django.shortcuts import render
 from django.views.generic.base import View
-from movie.models import jobType
 from django.http import HttpResponse
 from elasticsearch import Elasticsearch
 from datetime import datetime
