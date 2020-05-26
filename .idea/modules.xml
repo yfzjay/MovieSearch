@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://F:/D4-zuoye/.idea/D4-zuoye.iml" filepath="F:/D4-zuoye/.idea/D4-zuoye.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/MovieSearch.iml" filepath="$PROJECT_DIR$/.idea/MovieSearch.iml" />
+      <module fileurl="file://F:/学习相关/工程实训/movie/.idea/movie.iml" filepath="F:/学习相关/工程实训/movie/.idea/movie.iml" />
     </modules>
   </component>
 </project>
