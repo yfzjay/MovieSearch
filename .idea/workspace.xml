@@ -2,18 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e8a9db58-4180-4620-9aae-6a1ab71dda20" name="Default Changelist" comment="">
-      <change afterPath="F:/D4-zuoye/.idea/D4-zuoye.iml" afterDir="false" />
-      <change afterPath="F:/D4-zuoye/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="F:/D4-zuoye/.idea/misc.xml" afterDir="false" />
-      <change afterPath="F:/D4-zuoye/.idea/modules.xml" afterDir="false" />
-      <change afterPath="F:/D4-zuoye/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="F:/D4-zuoye/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="F:/D4-zuoye/作业6/work1_dangdang/work1_dangdang/items.py" beforeDir="false" afterPath="F:/D4-zuoye/作业6/work1_dangdang/work1_dangdang/items.py" afterDir="false" />
-      <change beforePath="F:/D4-zuoye/作业6/work1_dangdang/work1_dangdang/models/es_types.py" beforeDir="false" afterPath="F:/D4-zuoye/作业6/work1_dangdang/work1_dangdang/models/es_types.py" afterDir="false" />
-      <change beforePath="F:/D4-zuoye/作业6/work1_dangdang/work1_dangdang/spiders/spider.py" beforeDir="false" afterPath="F:/D4-zuoye/作业6/work1_dangdang/work1_dangdang/spiders/spider.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/MovieSearch.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/MovieSearch.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/movie/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/movie/views.py" afterDir="false" />
     </list>
@@ -87,7 +75,8 @@
       <updated>1590156065861</updated>
       <workItem from="1590156067071" duration="880000" />
       <workItem from="1590205600215" duration="2103000" />
-      <workItem from="1590459517516" duration="18801000" />
+      <workItem from="1590459517516" duration="20326000" />
+      <workItem from="1590551464701" duration="348000" />
     </task>
     <task id="LOCAL-00001" summary="111">
       <created>1590156129507</created>
@@ -124,7 +113,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590206291314</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="111">
+      <created>1590485201204</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1590485201204</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -88,9 +88,9 @@ class SearchView(View):
                 p2 = 10
             sql_should=[]
             sql_should.append({"match": {"title": key_words}})
-            sql_should.append({"match": {"description": key_words}})
-            sql_should.append({"match": {"director": key_words}})
-            sql_should.append({"match": {"performer": key_words}})
+            sql_should.append({"term": {"description": key_words}})
+            sql_should.append({"term": {"director": key_words}})
+            sql_should.append({"term": {"performer": key_words}})
             print(sql_should)
             sql_must=[]
             if source==1:
