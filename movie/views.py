@@ -151,7 +151,14 @@ class SearchView(View):
                             "must": sql_must
                         }
                     },
-                    "size": size
+                    "size": size,
+                    "sort": [
+                        {
+                            "score": {
+                                "order": "desc"
+                            }
+                        }
+                    ],
                 }
             )
             end_time = datetime.now()
