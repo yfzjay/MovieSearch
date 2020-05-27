@@ -6,9 +6,9 @@ from elasticsearch import Elasticsearch
 from datetime import datetime
 import redis
 
-client = Elasticsearch(hosts=["112.126.58.87"])
+client = Elasticsearch(hosts=["127.0.0.1"])
 
-pool = redis.ConnectionPool(host='112.126.58.87', port=6379, decode_responses=True)
+pool = redis.ConnectionPool(host='127.0.0.1', port=6379, decode_responses=True)
 redis_cli = redis.Redis(connection_pool=pool)
 
 response1 = client.search(
