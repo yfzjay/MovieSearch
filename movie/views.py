@@ -6,9 +6,9 @@ from elasticsearch import Elasticsearch
 from datetime import datetime
 import redis
 
-client = Elasticsearch(hosts=["127.0.0.1"])
+client = Elasticsearch(hosts=["112.126.58.87"])
 
-pool = redis.ConnectionPool(host='127.0.0.1', port=6379, decode_responses=True)
+pool = redis.ConnectionPool(host='112.126.58.87', port=6379, decode_responses=True)
 redis_cli = redis.Redis(connection_pool=pool)
 
 response1 = client.search(
@@ -88,10 +88,9 @@ class SearchView(View):
                 p2 = 10
             sql_should=[]
             sql_should.append({"match": {"title": key_words}})
-            sql_should.append({"term": {"description": key_words}})
-            sql_should.append({"term": {"director": key_words}})
-            sql_should.append({"term": {"performer": key_words}})
-            print(sql_should)
+            sql_should.append({"match": {"description": key_words}})
+            sql_should.append({"match": {"director": key_words}})
+            sql_should.append({"match": {"performer": key_words}})
             sql_must=[]
             if source==1:
                 sql_must.append({"match": {"resource": "豆瓣"}})
@@ -130,7 +129,6 @@ class SearchView(View):
                     }
                 }
             )
-            print(response)
             end_time = datetime.now()
         else:
             sql_must = []
@@ -142,6 +140,7 @@ class SearchView(View):
             if category!="":
                 sql_must.append({"match": {"categories": category}})
             size=int(size)
+            print(sql_must)
             start_time = datetime.now()
             # 根据关键字查找
             response = client.search(
@@ -155,7 +154,6 @@ class SearchView(View):
                     "size": size
                 }
             )
-            print(response)
             end_time = datetime.now()
         hit_list = []
         total_nums = response["hits"]["total"]['value']
