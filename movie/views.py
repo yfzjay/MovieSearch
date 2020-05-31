@@ -85,7 +85,8 @@ class SearchView(View):
         category = request.GET.get("category", "")
         area = request.GET.get("area", "")
         size = request.GET.get("size", "")
-        redis_cli.zincrby("search_keywords_set", 1, key_words)  # 该key_words的搜索记录+1
+        if key_words!="":
+            redis_cli.zincrby("search_keywords_set", 1, key_words)  # 该key_words的搜索记录+1
         douban_count = redis_cli.get("douban_count")
         tiantang_count=redis_cli.get("tiantang_count")
         try:
