@@ -11,7 +11,7 @@ client = Elasticsearch(hosts=["127.0.0.1"])
 pool = redis.ConnectionPool(host='127.0.0.1', port=6379, decode_responses=True)
 redis_cli = redis.Redis(connection_pool=pool)
 
-response1 = client.search(
+response_dou = client.search(
     index="movie",
     body={
         "query": {
@@ -23,7 +23,21 @@ response1 = client.search(
     }
 )
 
-redis_cli.set("douban_count",response1['hits']['total']['value'])
+redis_cli.set("douban_count",response_dou['hits']['total']['value'])
+
+response_tt = client.search(
+    index="movie",
+    body={
+        "query": {
+            "multi_match": {
+                "query": "电影天堂",
+                "fields": ["resource"]
+            }
+        }
+    }
+)
+
+redis_cli.set("tiantang_count",response_tt['hits']['total']['value'])
 
 class TopView(View):
     def get(self,request):
@@ -73,6 +87,7 @@ class SearchView(View):
         size = request.GET.get("size", "")
         redis_cli.zincrby("search_keywords_set", 1, key_words)  # 该key_words的搜索记录+1
         douban_count = redis_cli.get("douban_count")
+        tiantang_count=redis_cli.get("tiantang_count")
         try:
             source = int(source)
         except:
@@ -88,9 +103,9 @@ class SearchView(View):
                 p2 = 10
             sql_should=[]
             sql_should.append({"match": {"title": key_words}})
-            sql_should.append({"match": {"description": key_words}})
-            sql_should.append({"match": {"director": key_words}})
-            sql_should.append({"match": {"performer": key_words}})
+            sql_should.append({"match_phrase": {"description": key_words}})
+            sql_should.append({"match_phrase": {"director": key_words}})
+            sql_should.append({"match_phrase": {"performer": key_words}})
             sql_must=[]
             if source==1:
                 sql_must.append({"match": {"resource": "豆瓣"}})
@@ -213,5 +228,5 @@ class SearchView(View):
         body["total"] = total_nums
         body["movieList"] = hit_list
         data = {"status": 0, "costTime": last_seconds,
-                "douban_count": douban_count, "resultBody": body}
+                "douban_count": douban_count, "tiantang_count":tiantang_count,"resultBody": body}
         return HttpResponse(json.dumps(data), content_type="application/json")
