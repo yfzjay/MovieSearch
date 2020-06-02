@@ -112,16 +112,21 @@ class SearchView(View):
                 sql_must.append({"match": {"resource": "豆瓣"}})
             elif source==2:
                 sql_must.append({"match": {"resource": "电影天堂"}})
-            if period!="":
-                sql_must.append({"match": {"year": period}})
             if category!="":
                 sql_must.append({"match": {"categories": category}})
             if area!="":
                 sql_must.append({"match": {"area": area}})
-            start_time = datetime.now()
             sql_must.append({"bool":{"should":sql_should}})
+            sql_bool = {"bool": {"must": sql_must}}
+            if period!="":
+                period=int(period)
+                start_year=period
+                end_year=start_year+10
+                filter={"range":{"year":{"gte":start_year,"lte":end_year}}}
+                sql_bool["filter"]=filter
             print(sql_must)
             # 根据关键字查找
+            start_time = datetime.now()
             response = client.search(
                 index="movie",
                 body={
@@ -130,7 +135,7 @@ class SearchView(View):
                             "must":sql_must
                         }
                     },
-                  #  diqu qian50, yangshi yanse , niandai , an paixu
+                  #   an paixu
                     "from": (p1 - 1) * p2,
                     "size": p2,
                     # 对关键字进行高光标红处理
@@ -156,6 +161,8 @@ class SearchView(View):
                 sql_must.append({"match": {"resource": "电影天堂"}})
             if category!="":
                 sql_must.append({"match": {"categories": category}})
+            if area != "":
+                sql_must.append({"match": {"area": area}})
             size=int(size)
             print(sql_must)
             start_time = datetime.now()
