@@ -103,7 +103,7 @@ class SearchView(View):
             except:
                 p2 = 10
             sql_should=[]
-            sql_should.append({"match_phrase": {"title": key_words}})
+            sql_should.append({"match": {"title": key_words}})
             sql_should.append({"match_phrase": {"description": key_words}})
             sql_should.append({"match_phrase": {"director": key_words}})
             sql_should.append({"match_phrase": {"performer": key_words}})
@@ -135,7 +135,7 @@ class SearchView(View):
                     "size": p2,
                     # 对关键字进行高光标红处理
                     "highlight": {
-                        "pre_tags": ['<span color="red">'],
+                        "pre_tags": ['<span style="color:red">'],
                         "post_tags": ['</span>'],
                         "fields": {
                             "title": {},
