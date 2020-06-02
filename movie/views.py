@@ -149,7 +149,7 @@ class SearchView(View):
             # 根据关键字查找
             start_time = datetime.now()
             response = client.search(
-                index="movie",
+                index="newmovie",
                 body=body
             )
             end_time = datetime.now()
@@ -169,7 +169,7 @@ class SearchView(View):
             start_time = datetime.now()
             # 根据关键字查找
             response = client.search(
-                index="movie",
+                index="newmovie",
                 body={
                     "query": {
                         "bool": {
