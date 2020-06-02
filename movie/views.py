@@ -12,7 +12,7 @@ pool = redis.ConnectionPool(host='127.0.0.1', port=6379, decode_responses=True)
 redis_cli = redis.Redis(connection_pool=pool)
 
 response_dou = client.search(
-    index="movie",
+    index="newmovie",
     body={
         "query": {
             "multi_match": {
@@ -130,6 +130,7 @@ class SearchView(View):
                             "must":sql_must
                         }
                     },
+                  #  diqu qian50, yangshi yanse , niandai , an paixu
                     "from": (p1 - 1) * p2,
                     "size": p2,
                     # 对关键字进行高光标红处理
