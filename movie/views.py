@@ -130,9 +130,7 @@ class SearchView(View):
             response = client.search(
                 index="movie",
                 body={
-                    "query": {
-                        sql_bool
-                    },
+                    "query": sql_bool,
                   #   an paixu
                     "from": (p1 - 1) * p2,
                     "size": p2,
