@@ -103,7 +103,7 @@ class SearchView(View):
             except:
                 p2 = 10
             sql_should=[]
-            sql_should.append({"match": {"title": key_words}})
+            sql_should.append({"match_phrase": {"title": key_words}})
             sql_should.append({"match_phrase": {"description": key_words}})
             sql_should.append({"match_phrase": {"director": key_words}})
             sql_should.append({"match_phrase": {"performer": key_words}})
