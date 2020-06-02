@@ -26,7 +26,7 @@ response_dou = client.search(
 redis_cli.set("douban_count",response_dou['hits']['total']['value'])
 
 response_tt = client.search(
-    index="movie",
+    index="newmovie",
     body={
         "query": {
             "must": [
