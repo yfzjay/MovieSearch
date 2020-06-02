@@ -131,9 +131,7 @@ class SearchView(View):
                 index="movie",
                 body={
                     "query": {
-                        "bool": {
-                            "must":sql_must
-                        }
+                        sql_bool
                     },
                   #   an paixu
                     "from": (p1 - 1) * p2,
