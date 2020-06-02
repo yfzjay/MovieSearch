@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e8a9db58-4180-4620-9aae-6a1ab71dda20" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/movie/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -102,7 +103,7 @@
       <workItem from="1590895690804" duration="1506000" />
       <workItem from="1590912265960" duration="3641000" />
       <workItem from="1590930189045" duration="1352000" />
-      <workItem from="1591058426541" duration="4600000" />
+      <workItem from="1591058426541" duration="5102000" />
     </task>
     <task id="LOCAL-00001" summary="111">
       <created>1590156129507</created>
@@ -237,7 +238,14 @@
       <option name="project" value="LOCAL" />
       <updated>1591062797070</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="111">
+      <created>1591063204254</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1591063204254</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

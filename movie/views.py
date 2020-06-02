@@ -125,11 +125,7 @@ class SearchView(View):
                 filter={"range":{"year":{"gte":start_year,"lte":end_year}}}
                 sql_bool["bool"]["filter"]=filter
             print(sql_must)
-            # 根据关键字查找
-            start_time = datetime.now()
-            response = client.search(
-                index="movie",
-                body={
+            body={
                     "query": sql_bool,
                   #   an paixu
                     "from": (p1 - 1) * p2,
@@ -145,7 +141,15 @@ class SearchView(View):
                             "performer":{}
                         }
                     }
-                }
+            }
+            if sort!="" and (sort=="score" or sort=="year" or sort=="commentCount"):
+                sort_sql=[{ sort: { "order": "desc"}}]
+                body["sort"]=sort_sql
+            # 根据关键字查找
+            start_time = datetime.now()
+            response = client.search(
+                index="movie",
+                body=body
             )
             end_time = datetime.now()
         else:
