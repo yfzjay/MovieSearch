@@ -29,11 +29,13 @@ response_tt = client.search(
     index="newmovie",
     body={
         "query": {
-            "must": [
+            "bool":{
+                "must": [
                {
                    "match":{"resource":"电影天堂"}
                }
             ]
+            }
         }
     }
 )
