@@ -123,7 +123,7 @@ class SearchView(View):
                 start_year=period
                 end_year=start_year+10
                 filter={"range":{"year":{"gte":start_year,"lte":end_year}}}
-                sql_bool["filter"]=filter
+                sql_bool["bool"]["filter"]=filter
             print(sql_must)
             # 根据关键字查找
             start_time = datetime.now()
