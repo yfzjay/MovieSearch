@@ -29,10 +29,11 @@ response_tt = client.search(
     index="movie",
     body={
         "query": {
-            "multi_match": {
-                "query": "电影天堂",
-                "fields": ["resource"]
-            }
+            "must": [
+               {
+                   "match":{"resource":"电影天堂"}
+               }
+            ]
         }
     }
 )
