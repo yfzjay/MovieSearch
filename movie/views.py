@@ -12,7 +12,7 @@ pool = redis.ConnectionPool(host='127.0.0.1', port=6379, decode_responses=True)
 redis_cli = redis.Redis(connection_pool=pool)
 
 response_dou = client.search(
-    index="movie",
+    index="newmovie",
     body={
         "query": {
             "multi_match": {
@@ -26,7 +26,7 @@ response_dou = client.search(
 redis_cli.set("douban_count",response_dou['hits']['total']['value'])
 
 response_tt = client.search(
-    index="movie",
+    index="newmovie",
     body={
         "query": {
             "bool":{
@@ -60,7 +60,7 @@ class SuggestView(View):
         print(key_words)
         re_datas = []
         response = client.search(
-            index="movie",
+            index="newmovie",
             body={
                 "_source": "title",
                 "query": {
@@ -151,7 +151,7 @@ class SearchView(View):
             # 根据关键字查找
             start_time = datetime.now()
             response = client.search(
-                index="movie",
+                index="newmovie",
                 body=body
             )
             end_time = datetime.now()
@@ -171,7 +171,7 @@ class SearchView(View):
             start_time = datetime.now()
             # 根据关键字查找
             response = client.search(
-                index="movie",
+                index="newmovie",
                 body={
                     "query": {
                         "bool": {
