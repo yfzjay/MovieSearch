@@ -6,13 +6,13 @@ from elasticsearch import Elasticsearch
 from datetime import datetime
 import redis
 
-client = Elasticsearch(hosts=["112.126.58.87"])
+client = Elasticsearch(hosts=["127.0.0.1"])
 
-pool = redis.ConnectionPool(host='112.126.58.87', port=6379, decode_responses=True)
+pool = redis.ConnectionPool(host='127.0.0.1', port=6379, decode_responses=True)
 redis_cli = redis.Redis(connection_pool=pool)
 
 response_dou = client.search(
-    index="newmovie",
+    index="movie",
     body={
         "query": {
             "multi_match": {
@@ -26,7 +26,7 @@ response_dou = client.search(
 redis_cli.set("douban_count",response_dou['hits']['total']['value'])
 
 response_tt = client.search(
-    index="newmovie",
+    index="movie",
     body={
         "query": {
             "bool":{
@@ -151,7 +151,7 @@ class SearchView(View):
             # 根据关键字查找
             start_time = datetime.now()
             response = client.search(
-                index="newmovie",
+                index="movie",
                 body=body
             )
             end_time = datetime.now()
@@ -171,7 +171,7 @@ class SearchView(View):
             start_time = datetime.now()
             # 根据关键字查找
             response = client.search(
-                index="newmovie",
+                index="movie",
                 body={
                     "query": {
                         "bool": {
