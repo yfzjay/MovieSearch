@@ -223,7 +223,7 @@ class SearchView(View):
             hit_dict["resource"] = hit["_source"]["resource"]
             hit_dict["image"] = hit["_source"]["image"]
             hit_dict["imdb"] = hit["_source"]["imdb"]
-            hit_dict["star"] = hit["_source"]["star"]
+       #     hit_dict["star"] = hit["_source"]["star"]
             hit_dict["time"] = hit["_source"]["time"]
             hit_dict["commentCount"] = hit["_source"]["commentCount"]
             hit_dict["better"] = hit["_source"]["better"]
