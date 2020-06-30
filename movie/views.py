@@ -6,9 +6,9 @@ from elasticsearch import Elasticsearch
 from datetime import datetime
 import redis
 
-client = Elasticsearch(hosts=["127.0.0.1"])
+client = Elasticsearch(hosts=["112.126.58.87"])
 
-pool = redis.ConnectionPool(host='127.0.0.1', port=6379, decode_responses=True)
+pool = redis.ConnectionPool(host='112.126.58.87', port=6379, decode_responses=True)
 redis_cli = redis.Redis(connection_pool=pool)
 
 response_dou = client.search(
@@ -112,13 +112,13 @@ class SearchView(View):
             sql_should.append({"match_phrase": {"performer": key_words}})
             sql_must=[]
             if source==1:
-                sql_must.append({"match": {"resource": "豆瓣"}})
+                sql_must.append({"match_phrase": {"resource": "豆瓣"}})
             elif source==2:
-                sql_must.append({"match": {"resource": "电影天堂"}})
+                sql_must.append({"match_phrase": {"resource": "电影天堂"}})
             if category!="":
-                sql_must.append({"match": {"categories": category}})
+                sql_must.append({"match_phrase": {"categories": category}})
             if area!="":
-                sql_must.append({"match": {"area": area}})
+                sql_must.append({"match_phrase": {"area": area}})
             sql_must.append({"bool":{"should":sql_should}})
             sql_bool = {"bool": {"must": sql_must}}
             if period!="":
@@ -146,7 +146,7 @@ class SearchView(View):
                     }
             }
             if sort!="" and (sort=="score" or sort=="year" or sort=="commentCount"):
-                sort_sql=[{ sort.keyword: { "order": "desc"}}]
+                sort_sql=[{ sort: { "order": "desc"}}]
                 body["sort"]=sort_sql
             # 根据关键字查找
             start_time = datetime.now()
@@ -159,13 +159,13 @@ class SearchView(View):
             sql_must = []
             source = int(source)
             if source == 1:
-                sql_must.append({"match": {"resource": "豆瓣"}})
+                sql_must.append({"match_phrase": {"resource": "豆瓣"}})
             elif source == 2:
-                sql_must.append({"match": {"resource": "电影天堂"}})
+                sql_must.append({"match_phrase": {"resource": "电影天堂"}})
             if category!="":
-                sql_must.append({"match": {"categories": category}})
+                sql_must.append({"match_phrase": {"categories": category}})
             if area != "":
-                sql_must.append({"match": {"area": area}})
+                sql_must.append({"match_phrase": {"area": area}})
             size=int(size)
             print(sql_must)
             start_time = datetime.now()
@@ -181,7 +181,7 @@ class SearchView(View):
                     "size": size,
                     "sort": [
                         {
-                            "score.keyword": {
+                            "score": {
                                 "order": "desc"
                             }
                         }
