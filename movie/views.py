@@ -146,7 +146,7 @@ class SearchView(View):
                     }
             }
             if sort!="" and (sort=="score" or sort=="year" or sort=="commentCount"):
-                sort_sql=[{ sort: { "order": "desc"}}]
+                sort_sql=[{ sort.keyword: { "order": "desc"}}]
                 body["sort"]=sort_sql
             # 根据关键字查找
             start_time = datetime.now()
@@ -181,7 +181,7 @@ class SearchView(View):
                     "size": size,
                     "sort": [
                         {
-                            "score": {
+                            "score.keyword": {
                                 "order": "desc"
                             }
                         }
